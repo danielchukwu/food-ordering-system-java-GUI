@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class FoodUI {
@@ -106,10 +107,47 @@ public class FoodUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printOrders();
-                System.out.println("Place Order");
-                menuFrame.setVisible(false);
+                if (order.size() > 0){
+                    menuFrame.setVisible(false);
+                    placeOrder();
+                }
             }
         });
+    }
+
+    void placeOrder() {
+        try {
+            FileWriter file = new FileWriter("food orders.txt");
+
+//            System.out.println("ORDER SIZE: " + order.size());
+            for (int i=0; i < order.size(); i++){
+                file.append(order.get(i) + "\n");
+            }
+            file.append("\nOrders: " + order.size());
+            file.close();
+
+            successfulOrder();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    void successfulOrder() {
+        // defaults, frame, close, frame size, frame layout
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(400, 600);
+        frame.setLayout(new GridLayout(1, 1));
+
+        // components
+        JButton successfulBtn = new JButton("Order Placed Successfully!");
+
+        // add
+        frame.add(successfulBtn);
+
+        // set visible
+        frame.setVisible(true);
     }
 
     void addOrder(JButton foodBtn, String food) {
