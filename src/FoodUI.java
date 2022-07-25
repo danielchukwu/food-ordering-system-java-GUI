@@ -150,6 +150,9 @@ public class FoodUI {
         frame.setVisible(true);
     }
 
+    // FINALLY
+    // - to see orders check this projects directory. The file titled "food orders.txt"
+
     void addOrder(JButton foodBtn, String food) {
         foodBtn.addActionListener(new ActionListener() {
             @Override

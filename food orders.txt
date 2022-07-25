@@ -1,8 +1,5 @@
-beans
-spaghetti
-sausage
-chicken
-semovita
 vegetable soup
+semovita
+chicken
 
-Orders: 6
+Orders: 3
