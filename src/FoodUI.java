@@ -52,6 +52,7 @@ public class FoodUI {
         menuFrame.setSize(400, 600);
         menuFrame.setLayout(new GridLayout(7, 2));
 
+        // Create Food buttons using the items in the array
         for (int i = 0; i < foods.length; i++) {
             String foodName = foods[i];
             JButton foodBtn = new JButton(foodName);
