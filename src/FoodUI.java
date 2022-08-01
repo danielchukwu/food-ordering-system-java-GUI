@@ -127,9 +127,6 @@ public class FoodUI {
         frame.setVisible(true);
     }
 
-    // FINALLY
-    // - to see orders check this projects directory. The file titled "food orders.txt"
-
     void printOrders() {
         System.out.println(this.order);
     }
