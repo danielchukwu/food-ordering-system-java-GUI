@@ -7,7 +7,7 @@ public class Main {
         FoodUI theWisdom = new FoodUI();
         theWisdom.home();
 
-//        theWisdom.printOrders();
+        theWisdom.printOrders();
     }
 
 }

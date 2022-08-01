@@ -87,9 +87,6 @@ public class FoodUI {
 
         // make visible
         menuFrame.setVisible(true);
-
-
-
     }
 
     void placeOrder() {
