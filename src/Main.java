@@ -5,9 +5,9 @@ public class Main {
         System.out.println("Hello World!");
 
         FoodUI theWisdom = new FoodUI();
-        theWisdom.printOrders();
-
         theWisdom.home();
+
+//        theWisdom.printOrders();
     }
 
 }

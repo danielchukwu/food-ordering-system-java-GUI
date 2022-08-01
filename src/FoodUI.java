@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class FoodUI {
 
     ArrayList<String> order = new ArrayList<String>();
+    String [] foods = {"fried rice", "jollof rice", "beans", "plantain", "spaghetti", "saussage", "meat", "chicken", "eba", "semovita", "egusi", "vegetable soup", "white rice & stew"};
 
     FoodUI (){
         System.out.println("FoodUI CREATED!");
@@ -22,7 +23,6 @@ public class FoodUI {
 
         // Add label
         JButton label = new JButton("The Wisdom");
-
 
         // Button
         Icon arrow = new ImageIcon(new ImageIcon("C:\\arrows\\double.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
@@ -52,58 +52,29 @@ public class FoodUI {
         menuFrame.setSize(400, 600);
         menuFrame.setLayout(new GridLayout(7, 2));
 
-        // create buttons
-        JButton friedRice = new JButton("fried rice");
-        JButton jollofRice = new JButton("jollof rice");
-        JButton beans = new JButton("beans");
-        JButton plantain = new JButton("plantain");
-        JButton spaghetti = new JButton("spaghetti");
-        JButton sausage = new JButton("sausage");
-        JButton meat = new JButton("meat");
-        JButton chicken = new JButton("chicken");
-        JButton eba = new JButton("eba");
-        JButton semovita = new JButton("semovita");
-        JButton egusi = new JButton("egusi");
-        JButton vegetableSoup = new JButton("vegetable soup");
-        JButton whiteRiceAndStew = new JButton("white rice & stew");
-        JButton placeorder = new JButton("ORDER");
+        for (int i = 0; i < foods.length; i++) {
+            String foodName = foods[i];
+            JButton foodBtn = new JButton(foodName);
+            menuFrame.add(foodBtn);
 
-        // add buttons
-        menuFrame.add(friedRice);
-        menuFrame.add(jollofRice);
-        menuFrame.add(beans);
-        menuFrame.add(plantain);
-        menuFrame.add(spaghetti);
-        menuFrame.add(sausage);
-        menuFrame.add(meat);
-        menuFrame.add(chicken);
-        menuFrame.add(eba);
-        menuFrame.add(semovita);
-        menuFrame.add(egusi);
-        menuFrame.add(vegetableSoup);
-        menuFrame.add(whiteRiceAndStew);
-        menuFrame.add(placeorder);
+            foodBtn.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (order.contains(foodName)){
+                        System.out.println("already added");;
+                    } else {
+                        order.add(foodName);
+                    }
+                }
+            });
+        }
 
-        // make visible
-        menuFrame.setVisible(true);
+        // create order button and add
+        JButton orderBtn = new JButton("Order Button");
+        menuFrame.add(orderBtn);
 
-        // Set Button Listeners
-        addOrder(friedRice, "fried rice");
-        addOrder(jollofRice, "jollof rice");
-        addOrder(beans, "beans");
-        addOrder(plantain, "plantain");
-        addOrder(spaghetti, "spaghetti");
-        addOrder(sausage, "sausage");
-        addOrder(meat, "meat");
-        addOrder(chicken, "chicken");
-        addOrder(eba, "eba");
-        addOrder(semovita, "semovita");
-        addOrder(egusi, "egusi");
-        addOrder(vegetableSoup, "vegetable soup");
-        addOrder(whiteRiceAndStew, "white rice & stew");
-
-        // Place Order
-        placeorder.addActionListener(new ActionListener() {
+        // Add event listener on orderBtn
+        orderBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printOrders();
@@ -113,6 +84,12 @@ public class FoodUI {
                 }
             }
         });
+
+        // make visible
+        menuFrame.setVisible(true);
+
+
+
     }
 
     void placeOrder() {
@@ -152,19 +129,6 @@ public class FoodUI {
 
     // FINALLY
     // - to see orders check this projects directory. The file titled "food orders.txt"
-
-    void addOrder(JButton foodBtn, String food) {
-        foodBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (order.contains(food)){
-                    System.out.println("already added");;
-                } else {
-                    order.add(food);
-                }
-            }
-        });
-    }
 
     void printOrders() {
         System.out.println(this.order);
